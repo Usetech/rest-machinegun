@@ -1,0 +1,10 @@
+version: "3.5"
+
+services:
+  rest_machinegun:
+    image: "rest-machinegun:latest"
+    container_name: rest_machinegun
+    volumes:
+      - "./config/config.json:/usr/verticles/config.json"
+      - "./config/logback.xml:/usr/verticles/logback.xml"
+      - "./logs:/usr/verticles/logs"
