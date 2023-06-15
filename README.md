@@ -14,7 +14,7 @@ _!!! Note that in real json file **comments** are not allowed and should be remo
 
 ```json
 {
-  "machinegun": { // machinegun config root
+  "machinegun": { /* machinegun config root */
     "tasks": [ // tasks with request definitions 
       {
         // interval between task executes, milliseconds (mustache*)
