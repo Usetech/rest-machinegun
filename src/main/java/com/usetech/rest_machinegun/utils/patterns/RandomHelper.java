@@ -47,7 +47,7 @@ public class RandomHelper {
 		if (args.length == 0) return null;
 		int offs = "random".equalsIgnoreCase(args[0]) ? 1 : 0;
 		if (args.length > offs) {
-			switch (args[offs++].toLowerCase()) {
+			switch (args[offs++].toLowerCase()) { // below this line offs points to second arg
 				case "byte":
 					return Long.valueOf(randomByte()).toString();
 				case "int":
@@ -60,6 +60,10 @@ public class RandomHelper {
 				case "range":
 					if (args.length <= offs + 1) return null;
 					return Long.valueOf(randomRange(Long.parseLong(args[offs]), Long.parseLong(args[offs + 1]))).toString();
+				case "of":
+					if (args.length <= offs) return null;
+					int idx = (int) randomRange(offs, args.length);
+					return args[idx];
 				case "ascii":
 					if (args.length <= offs) return null;
 					int len = Integer.parseInt(args[offs++]);

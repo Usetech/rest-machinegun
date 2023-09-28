@@ -97,11 +97,17 @@ Examples: `{{counter}}`, `{{counter.A}}`, `{{counter.count1}}`.
 Byte range is `-128..127`; integer: `-2147483648..2147483647`; long: `-9223372036854775808..9223372036854775807`.
 - `random.uuid` - String value with random UUID. Generates value like `"5ca436cc-d46a-47b2-8a2f-0ba3b85898ea"`.
 - `random.range.<from>.<to>` - Random value in range `<from>..<to>`.
+- `random.of.<val 1>.<val 2>...<val n>` - Random value, one of following by `of`, separated by `.`.
 - `random.ascii.<lenght>` - Random ASCII character sequence of specified fixed length.
 - `random.ascii.<min lenght>.<max length>` - Random ASCII character sequence. The length of the sequence is random value in specified range.
 - `random.ascii.<min lenght>.<max length>.<regexp range>` - Random ASCII character sequence. The length of the sequence is random value in specified range. The last argument specifies the regular expression range to generate characters in order to match this range. Regexp range is inner content of `[]` statement (see example below).
 
-Examples: `{{random.int}}` - a random value between -2147483648 and 2147483647 inclusive; `{{random.range.0.8}}` - a random value between 0 and 7 inclusive; `{{random.ascii.1024}}` - random string 1024 characters length (chars within codes from 32 to 255, ASCII); `{{random.ascii.16.16.A-Za-z0-9$%#!}}` - random string 16 of characters matching the regexp `[A-Za-z0-9$%#!]`.
+Examples:
+`{{random.int}}` - a random value between -2147483648 and 2147483647 inclusive;
+`{{random.range.0.8}}` - a random value between 0 and 7 inclusive;
+`{{random.of.Cat.Dog.Dog.Horse}}` - one of "Cat", "Dog" or "Horse" (a probability of "Dog" is 50%, but each other values - 25%);
+`{{random.ascii.1024}}` - random string 1024 characters length (chars within codes from 32 to 255, ASCII);
+`{{random.ascii.16.16.A-Za-z0-9$%#!}}` - random string 16 of characters matching the regexp `[A-Za-z0-9$%#!]`.
 
 ## Running
 
