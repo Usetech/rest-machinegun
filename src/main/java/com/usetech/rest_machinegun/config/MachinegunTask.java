@@ -3,6 +3,7 @@ package com.usetech.rest_machinegun.config;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.util.Collections;
 import java.util.Map;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -52,7 +53,7 @@ public class MachinegunTask {
 	}
 
 	public Map<String, String> getEnv() {
-		return env;
+		return env != null ? env : Collections.emptyMap();
 	}
 
 	public void setEnv(Map<String, String> env) {
