@@ -149,7 +149,7 @@ public class MachinegunVerticle extends AbstractVerticle {
 		request.method(task.getRequest().getMethod().toHttpMethod());
 		// headers
 		if (task.getRequest().getHeaders() != null) {
-			task.getRequest().getHeaders().forEach((key, value) -> request.headers().set(key, value));
+			task.getRequest().getHeaders().forEach((key, value) -> request.headers().set(key, resolveString(task, value)));
 		}
 		return url;
 	}
