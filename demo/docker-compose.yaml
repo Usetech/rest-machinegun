@@ -5,6 +5,6 @@ services:
     image: "rest-machinegun:latest"
     container_name: rest_machinegun
     volumes:
-      - "./config/config.json:/usr/verticles/config.json"
-      - "./config/logback.xml:/usr/verticles/logback.xml"
+      - "./config.json:/usr/verticles/config.json"
+      - "./logback.xml:/usr/verticles/logback.xml"
       - "./logs:/usr/verticles/logs"

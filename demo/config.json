@@ -1,0 +1,48 @@
+{
+  "machinegun": {
+    "tasks": [
+      {
+        "interval-ms": 10000,
+        "env": {
+          "MAIL_FROM": "aaa",
+          "MAIL_TO": "customer_23@acme.com",
+          "PASS": "secretWORD"
+        },
+        "request": {
+          "url": "http://localhost/api/mail/send-mail",
+          "method": "POST",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "body": "{ \"phoneFrom\": \"{{env.PHONE_FROM}}\", \"phoneTo\": \"{{env.PHONE_TO}}\", \"message\": \"Message #{{counter.a}}\", \"smsTtlMs\": 0 }",
+          "volatile": true
+        },
+        "authorization": {
+          "oauth2": {
+            "token-url": "http://auth:8080/realms/main/protocol/openid-connect/token",
+            "client-id": "my-app",
+            "client-secret": "9b527e11-8b83-4a5b-a81d-b0f505e882e1",
+            "username": "user_{{random.range.1.4}}",
+            "password": "{{env.PASS}}"
+          }
+        },
+        "repeats": "{{random.range.4.20}}"
+      },
+      {
+        "cron-expr": "17 0/1 * * * ? *",
+        "request": {
+          "url": "http://acme.com/counter?aaa={{counter.aaa}}",
+          "method": "GET",
+          "volatile": true
+        },
+        "authorization": {
+          "basic": {
+            "username": "admin",
+            "password": "1111"
+          }
+        },
+        "repeats": 10
+      }
+    ]
+  }
+}
